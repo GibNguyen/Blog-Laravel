@@ -77,10 +77,8 @@
             <!-- Side widgets-->
             <div class="col-lg-4">
                 <!-- Search widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Search</div>
+                
                     <form action="{{ route('search') }}" method="get">
-
                         <div class="card mb-4">
                             <div class="card-header">Search</div>
                             <div class="card-body">
@@ -92,7 +90,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
                 <!-- Categories widget-->
                 <div class="card mb-4">
                     <div class="card-header">Categories</div>
