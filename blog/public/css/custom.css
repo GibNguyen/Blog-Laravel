@@ -1,0 +1,121 @@
+div.content {
+    min-height: 550px;
+}
+
+.post-comments {
+    margin-top: 50px;
+}
+
+.post-comments span.no-of-comments {
+    color: #777;
+    font-size: 0.8em;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+.post-comments header {
+    margin-bottom: 40px;
+}
+
+.post-comments .comment:last-of-type .comment-body {
+    border-bottom: none;
+}
+
+.post-comments .image {
+    margin-right: 15px;
+}
+
+.post-comments .title::after {
+    display: none;
+}
+
+.post-comments img {
+    max-width: 40px;
+    min-width: 40px;
+    height: 40px;
+}
+
+.post-comments strong {
+    display: block;
+    color: #555;
+}
+
+.post-comments span.date {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.post-comments span.date::after {
+    display: none;
+}
+
+.post-comments .comment-body {
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.post-comments p {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.add-comment {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.add-comment header {
+    margin-bottom: 30px;
+}
+
+.add-comment input,
+.add-comment textarea {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    border-radius: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+.add-comment input::-moz-placeholder,
+.add-comment textarea::-moz-placeholder {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #aaa;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+}
+
+.add-comment input::-webkit-input-placeholder,
+.add-comment textarea::-webkit-input-placeholder {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #aaa;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+}
+
+.add-comment input:-ms-input-placeholder,
+.add-comment textarea:-ms-input-placeholder {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #aaa;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+}
+
+.add-comment input:focus,
+.add-comment textarea:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid #999;
+}
+
+.add-comment textarea {
+    min-height: 150px;
+}
+
