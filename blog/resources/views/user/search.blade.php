@@ -4,26 +4,27 @@
     <div class="row mt-4">
 
         <!-- Blog entries-->
+        <h3>Search Result: {{ $key }} </h3>
+        @if ($postList->count() == 0)
+            <div class="alert alert-danger text-center">
+                Data does not exist
+            </div>
+        @endif
+        <!-- Featured blog post-->
+        <!-- Nested row for non-featured blog posts-->
+    </div>
+    <div class="row">
         <div class="col-lg-8">
-            <h3>Search Result: {{ $key }} </h3>
-            @if ($postList->count() == 0)
-                <div class="alert alert-danger text-center">
-                    Data does not exist
-                </div>
-            @endif
-            <!-- Featured blog post-->
-            <!-- Nested row for non-featured blog posts-->
 
             <div class="row ">
-
-
                 <div class="col-lg-6">
                     @foreach ($postList as $post)
                         <!-- Blog post-->
                         @if ($loop->odd)
                             <div class="card mb-4">
                                 <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
-                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%" height="200px" /></a>
+                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%"
+                                        height="200px" /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $post->created_at }}</div>
                                     <h2 class="card-title h4">{{ $post->title }}</h2>
@@ -46,7 +47,8 @@
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
-                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%" height="200px" /></a>
+                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%"
+                                        height="200px" /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $post->created_at }}</div>
                                     <h2 class="card-title h4">{{ $post->title }}</h2>
@@ -68,49 +70,9 @@
         <!-- Side widgets-->
         <div class="col-lg-4">
             <!-- Search widget-->
-            <form action="{{ route('search') }}" method="get">
-                {{-- @csrf --}}
-                <form action="{{ route('search') }}" method="get">
-                    <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..."
-                                    aria-label="Enter search term..." aria-describedby="button-search" name='search'/>
-                                <button class="btn btn-primary" id="button-search" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form> 
-            </form>
+            @include('user.searchwidget')
             <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row ">
-                        @foreach ($categoryList as $category)
-                            @if ($loop->odd)
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a class="text-uppercase" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
-
-                        @foreach ($categoryList as $category)
-                            @if ($loop->even)
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a class="text-uppercase" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <!-- Side widget-->
+            @include('user.categorywidget')
         </div>
     </div>
 @endsection

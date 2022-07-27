@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $postList = Post::paginate(4);
+        $postList = Post::orderBy('created_at','desc')->paginate(4);
         return view('admin.post.list', compact('postList'));
     }
 
@@ -115,8 +115,7 @@ class PostController extends Controller
 
     public function delete($id)
     {
-        $post = Post::find($id);
-        Post::destroy($post->id);
+        Post::destroy($id);
         return redirect()->route('admin.post.index')->with('message', 'Delete Successfull');
     }
 

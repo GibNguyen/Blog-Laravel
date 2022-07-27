@@ -1,109 +1,73 @@
 @extends('layouts.user')
 
 @section('content')
-
-<div class="row mt-4">
-    <!-- Blog entries-->
-    <div class="col-lg-8">
+    <div class="row mt-4">
+        <!-- Blog entries-->
         <!-- Featured blog post-->
         <!-- Nested row for non-featured blog posts-->
         <h3>Category: {{ $category->name }}</h3>
         <hr>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row ">
 
-        <div class="row ">
-
-
-            <div class="col-lg-6">
-                @foreach ($postList as $post)
-                    <!-- Blog post-->
-                    @if ($loop->odd)
-                        <div class="card mb-4">
-                            <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
-                                    src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%" height="200px" /></a>
-                            <div class="card-body">
-                                <div class="small text-muted">{{ $post->created_at }}</div>
-                                <h2 class="card-title h4">{{ $post->title }}</h2>
-                                <p class="card-text">{{ strip_tags($post->content) }}</p>
-                                <a class="btn btn-primary" href="{{ route('detail', $post->id) }}">Read more →</a>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-
-
-
-
-
-
-            <div class="col-lg-6">
-                @foreach ($postList as $post)
-                    @if ($loop->even)
+                <div class="col-lg-6">
+                    @foreach ($postList as $post)
                         <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
-                                    src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%" height="200px" /></a>
-                            <div class="card-body">
-                                <div class="small text-muted">{{ $post->created_at }}</div>
-                                <h2 class="card-title h4">{{ $post->title }}</h2>
-                                <p class="card-text">{{ strip_tags($post->content) }}</p>
-                                <a class="btn btn-primary" href="{{ route('detail', $post->id) }}">Read more →</a>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>  
-        </div>
-
-
-        <!-- Pagination-->
-        <div class='d-flex justify-content-center'>
-            {!! $postList->links() !!}
-        </div>
-    </div>
-    <!-- Side widgets-->
-    <div class="col-lg-4">
-        <!-- Search widget-->
-        <form action="{{ route('search') }}" method="get">
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..."
-                            aria-label="Enter search term..." aria-describedby="button-search" name='search'/>
-                        <button class="btn btn-primary" id="button-search" type="submit">Search</button>
-                    </div>
-                </div>
-            </div>
-        </form>         
-        <!-- Categories widget-->
-        <div class="card mb-4">
-            <div class="card-header">Categories</div>
-            <div class="card-body">
-                <div class="row ">
-                    @foreach ($categoryList as $category)
                         @if ($loop->odd)
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a class="text-uppercase" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                                </ul>
+                            <div class="card mb-4">
+                                <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
+                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%"
+                                        height="200px" /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ $post->created_at }}</div>
+                                    <h2 class="card-title h4">{{ $post->title }}</h2>
+                                    <p class="card-text">{{ strip_tags($post->content) }}</p>
+                                    <a class="btn btn-primary" href="{{ route('detail', $post->id) }}">Read more →</a>
+                                </div>
                             </div>
                         @endif
                     @endforeach
+                </div>
 
-                    @foreach ($categoryList as $category)
+
+
+
+
+
+                <div class="col-lg-6">
+                    @foreach ($postList as $post)
                         @if ($loop->even)
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a class="text-uppercase" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
-                                </ul>
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{{ route('detail', $post->id) }}"><img class="card-img-top"
+                                        src="{{ asset('upload/image/' . $post->image) }}" alt="..." width="100%"
+                                        height="200px" /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ $post->created_at }}</div>
+                                    <h2 class="card-title h4">{{ $post->title }}</h2>
+                                    <p class="card-text">{{ strip_tags($post->content) }}</p>
+                                    <a class="btn btn-primary" href="{{ route('detail', $post->id) }}">Read more →</a>
+                                </div>
                             </div>
                         @endif
                     @endforeach
                 </div>
             </div>
+
+
+            <!-- Pagination-->
+            <div class='d-flex justify-content-center'>
+                {!! $postList->links() !!}
+            </div>
         </div>
-        <!-- Side widget-->
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            @include('user.searchwidget')
+            <!-- Categories widget-->
+            @include('user.categorywidget')
+        </div>
     </div>
-</div>
 @endsection

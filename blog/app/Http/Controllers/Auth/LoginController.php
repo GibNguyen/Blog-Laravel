@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::INDEX;
+    // protected $redirectTo = RouteServiceProvider::INDEX;
 
     /**
      * Create a new controller instance.
@@ -60,4 +60,13 @@ class LoginController extends Controller
             ? new JsonResponse([], 204)
             : redirect('/admin');
     }
+
+    public function showLoginForm()
+{
+    if(!session()->has('url.intended'))
+    {
+        session(['url.intended' => url()->previous()]);
+    }
+    return view('auth.login');
+}
 }

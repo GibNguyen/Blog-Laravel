@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,37 @@
     <title>Jquery Demo</title>
 </head>
 <script>
-    jQuery(document).ready(function() {
-        jQuery('#btn1').click(function() {
-            alert($('#id-textbox').val());
-          });
+    var time = 0;
+    $(document).ready(function () {
+        $('#wrapper').scroll(function () {
+            time++;
+            $('#result').html("Bạn đang scroll lần thứ " + time);
+        });
     });
-  
-</script>
-<body>
-    <h1>Welcome to Jquery</h1>
 
-    <input id="input1" type="text">
-    <button id="btn1">Click</button>
+</script>
+
+<body>
+    <div id="wrapper" style="width: 200px;height: 200px;overflow: scroll;">
+        xin <br />
+        chào<br />
+        các<br />
+        bạn<br />
+        chào<br />
+        mừng<br />
+        bạn<br />
+        đến<br />
+        với<br />
+        freetuts.net<br />
+        Chúc<br />
+        các<br />
+        bạn<br />
+        học<br />
+        tốt
+    </div>
+    <div id="result">
+
+    </div>
 </body>
+
 </html>

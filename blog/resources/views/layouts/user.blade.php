@@ -61,37 +61,18 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                        {{-- <li class="nav-item">
-                            <div class="dropdown text-end">
-                                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="user/img/user.svg" alt="mdo" width="32" height="32"
-                                        class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                                </ul>
-                            </div>
-                        </li> --}}
+                    
                     </ul>
                 </div>
             </div>
         </nav>
     @endif
-    <!-- Page header with logo and tagline-->
-    {{-- <header class="py-5 bg-light border-bottom mb-4">
-            <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to My Blog!</h1>
-                </div>
-            </div>
-        </header> --}}
-    <!-- Page content-->
     <div class="container">
 
         @yield('content')
 
     </div>
+    
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">

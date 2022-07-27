@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller
@@ -15,23 +16,19 @@ class HomePageController extends Controller
     //
     public function index()
     {
-
-    // view()->share('postList', $value);
-
-        // $postList = Post::all();
-        $postList = Post::paginate(4);
-        return view('user.index', compact('postList', 'categoryList'));
+        $postList = Post::orderBy('created_at','desc')->paginate(4);
+        return view('user.index', compact('postList'));
     }
 
     public function detail($id)
     {
         $post = Post::find($id);
-        $commentList = $post->comment->all();
-        $categoryList = Category::all();
+        $allComments = $post->comment->all();
+        $commentList = $post->comment()->orderBy('created_at','desc')->paginate(4);
 
         $category = $post->category->all();
 
-        return view('user.detail', compact('post', 'category', 'categoryList', 'commentList'));
+        return view('user.detail', compact('post', 'category', 'commentList','allComments'));
 
     }
 
@@ -43,7 +40,6 @@ class HomePageController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $post->id;
         $comment->save();
-        // return view('user.detail', compact('post', 'category', 'categoryList', 'commentList'));
         return back();
     }
 
@@ -52,28 +48,32 @@ class HomePageController extends Controller
         $key = $request->search;
         $postList = Post::where('title', 'like', '%' . $key. '%')
             ->orWhere('content', 'like', '%' . $key . '%')
+            ->orderBy('created_at','desc')
             ->paginate(4);
         $postList->appends(['search' => $request->search]);
 
-        $categoryList = Category::all();
-        return view('user.search', compact('postList', 'categoryList','key'));
+        return view('user.search', compact('postList','key'));
     }
 
     public function category($id)
     {
         $category = Category::find($id);
 
-        $postList = $category->posts()->paginate(4);
-        $categoryList = Category::all();
-        return view('user.category', compact('category', 'postList', 'categoryList'));
+        $postList = $category->posts()->orderBy('created_at','desc')->paginate(4);
+        return view('user.category', compact('category', 'postList'));
     }
 
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return back();
     }
 
     public function jquery(){
         return view('user.jquery');
+    }
+
+    public function deleteComment($id) {
+        Comment::destroy($id);
+        return back();
     }
 }
