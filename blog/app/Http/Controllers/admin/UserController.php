@@ -18,10 +18,7 @@ class UserController extends Controller
     //
     public function index()
     {
-
-        // $userList = User::Pagina();
         $userList = User::paginate(4);
-
         return view('admin.user.list', compact('userList'));
     }
 
@@ -102,8 +99,6 @@ class UserController extends Controller
             User::destroy($user->id);
             return redirect()->route('admin.user.index')->with('message', 'Delete Successfull');
         }
-        else{
             return redirect()->route('admin.user.index')->with('message', 'Cannot Delete User');
-        }
     }
 }

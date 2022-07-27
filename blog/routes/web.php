@@ -32,6 +32,7 @@ Route::post('/detail/{id}', [HomePageController::class, 'comment']);
 Route::get('/search', [HomePageController::class, 'search'])->name('search');
 Route::get('/category/{id}',[HomePageController::class, 'category'])->name('category');
 Route::get('/logout',[HomePageController::class, 'logout'])->name('logout');
+Route::get('/jquery',[HomePageController::class, 'jquery'])->name('jquery');
 
 
 Route::prefix('admin')->middleware('auth','can:permissions')->name('admin.')->group(function () {

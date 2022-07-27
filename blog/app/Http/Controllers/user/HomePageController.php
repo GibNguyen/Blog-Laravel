@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller
 {
+
     //
     public function index()
     {
@@ -19,7 +20,6 @@ class HomePageController extends Controller
 
         // $postList = Post::all();
         $postList = Post::paginate(4);
-        $categoryList = Category::all();
         return view('user.index', compact('postList', 'categoryList'));
     }
 
@@ -37,14 +37,8 @@ class HomePageController extends Controller
 
     public function comment(Request $request, $id)
     {
-        $categoryList = Category::all();
-
         $post = Post::find($id);
-        $commentList = $post->comment->all();
-
-        $category = $post->category->all();
         $comment = new Comment();
-
         $comment->content = $request->comment;
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $post->id;
@@ -77,5 +71,9 @@ class HomePageController extends Controller
     public function logout(){
         Auth::logout();
         return redirect('/');
+    }
+
+    public function jquery(){
+        return view('user.jquery');
     }
 }

@@ -13,12 +13,7 @@ class CategoryController extends Controller
     //
     public function index()
     {
-        // $categoryList = Category::all();
         $categoryList = Category::paginate(4);
-
-        
-        foreach ($categoryList as $category) {
-        }
         return view('admin.category.list', compact('categoryList'));
     }
 

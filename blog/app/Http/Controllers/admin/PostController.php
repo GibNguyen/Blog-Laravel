@@ -15,7 +15,6 @@ class PostController extends Controller
     public function index()
     {
 
-        // $postList = Post::all();
         $postList = Post::paginate(4);
         return view('admin.post.list', compact('postList'));
     }
@@ -45,7 +44,6 @@ class PostController extends Controller
 
             ]
         );
-        // dd($request);
         $post = new Post();
         $post->title = $request->title;
 
@@ -100,10 +98,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
 
-        // $data = [
-        //     $post->title => $request->title,
-        //     $post->content => $request->content;
-        // ];
+       
 
         if ($request->file('image')) {
             $image = $request->file('image');
@@ -113,12 +108,8 @@ class PostController extends Controller
 
             $post->image = $getImage;
         }
-        // dd($request->input('category'));
-        // dd($request->category,[]);
         $post->save();
         $post->category()->sync($request->category);
-        // $post->category()->sync($request->input('category', []));
-
         return redirect()->route('admin.post.index')->with('message', 'Update Successfull');
     }
 
@@ -132,8 +123,6 @@ class PostController extends Controller
     public function detail($id)
     {
         $post = Post::find($id);
-        // dd($post->category->all());
         return view('admin.post.detail', compact('post'));
-
     }
 }
