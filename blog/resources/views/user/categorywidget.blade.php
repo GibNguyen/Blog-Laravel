@@ -3,7 +3,7 @@
     <div class="card-header">Categories</div>
     <div class="card-body">
         <div class="row ">
-            @foreach ($categoryList as $category)
+            @foreach ($allCategory as $category)
                 @if ($loop->odd)
                     <div class="col-sm-6">
                         <ul class="list-unstyled mb-0">
@@ -13,7 +13,7 @@
                 @endif
             @endforeach
 
-            @foreach ($categoryList as $category)
+            @foreach ($allCategory as $category)
                 @if ($loop->even)
                     <div class="col-sm-6">
                         <ul class="list-unstyled mb-0">

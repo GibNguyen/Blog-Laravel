@@ -22,7 +22,7 @@
             <label for="inputEmail3" class="col-3
                 col-form-label">Title</label>
             <div class="col-9">
-                <input type="text" class="form-control" id="inputEmail3" name="title" value="{{ old('email') }}">
+                <input type="text" class="form-control" id="inputEmail3" name="title" value="{{ old('title') }}">
                 @error('title')
                     <span style="color: red">{{ $message }}</span>
                 @enderror
@@ -48,7 +48,7 @@
             <label for="editor" class="col-3
                 col-form-label">Content</label>
             <div class="col-9">
-                <textarea class="form-control ckeditor" id="editor" name="content" cols="80" rows="10"></textarea>
+                <textarea class="form-control ckeditor" id="editor" name="content" cols="80" rows="10" value="{{ old('content') }}"></textarea>
                 @error('content')
                     <span style="color: red">{{ $message }}</span>
                 @enderror
