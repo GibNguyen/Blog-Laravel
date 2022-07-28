@@ -7,7 +7,7 @@
         <h3>Search Result: {{ $key }} </h3>
         @if ($postList->count() == 0)
             <div class="alert alert-danger text-center">
-                Data does not exist
+                No Results Found
             </div>
         @endif
         <!-- Featured blog post-->

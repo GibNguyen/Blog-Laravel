@@ -48,7 +48,7 @@
                         <td width="5%"><a href="{{ route('admin.post.detail', $post->id) }}"
                                 class="btn btn-info ">View</a></td>
                         <td width="5%"><a href="{{ route('admin.post.edit', $post->id) }}"
-                                class="btn btn-warning ">Edit</a></td>
+                                class="btn btn-warning fa-solid fa-pen-to-square ">Edit</a></td>
                         <td width="5%"><a onclick="return confirm('Are you sure you want to delete this user?')"
                                 href="{{ route('admin.post.delete', $post->id) }}" class="btn btn-danger ">Delete</a></td>
                     </tr>
@@ -59,6 +59,6 @@
         </tbody>
     </table>
     <div class='d-flex justify-content-center'>
-        {!! $postList->links() !!}
+        {{ $postList->onEachSide(2)->links() }}
     </div>
 @endsection
